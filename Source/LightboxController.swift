@@ -354,8 +354,11 @@ open class LightboxController: UIViewController {
     }
     
     fileprivate func loadDynamicBackground(_ image: UIImage) {
-        backgroundView.image = image
-        backgroundView.layer.add(CATransition(), forKey: "fade")
+        UIView.transition(with: backgroundView,
+                          duration: CATransaction.animationDuration(),
+                          options: .transitionCrossDissolve,
+                          animations: { [weak self] in self?.backgroundView.image = image },
+                          completion: nil)
     }
     
     func toggleControls(pageView: PageView?, visible: Bool, duration: TimeInterval = 0.1, delay: TimeInterval = 0) {
