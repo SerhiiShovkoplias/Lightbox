@@ -361,7 +361,7 @@ open class LightboxController: UIViewController {
                           completion: nil)
     }
     
-    func toggleControls(pageView: PageView?, visible: Bool, duration: TimeInterval = 0.1, delay: TimeInterval = 0) {
+    func toggleControls(pageView: PageView?, visible: Bool, duration: TimeInterval = CATransaction.animationDuration(), delay: TimeInterval = 0) {
         let alpha: CGFloat = visible ? 1.0 : 0.0
         
         pageView?.playButton.isHidden = !visible
