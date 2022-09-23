@@ -95,7 +95,7 @@ extension HeaderView: LayoutConfigurable {
     let topPadding: CGFloat
 
     if #available(iOS 11, *) {
-      topPadding = safeAreaInsets.top
+        topPadding = safeAreaInsets.top + 10.0
     } else {
       topPadding = 0
     }

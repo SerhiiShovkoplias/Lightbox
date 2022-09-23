@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     view.addSubview(showButton)
     title = "Lightbox"
     LightboxConfig.preload = 2
+    LightboxConfig.headerHeight = 50.0
   }
   
   // MARK: - Action methods
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
         
         let controller = LightboxController(images: images)
         controller.dynamicBackground = true
-        
+        controller.headerView.backgroundColor = .black
         present(controller, animated: true, completion: nil)
     }
 }

@@ -115,7 +115,7 @@ open class LightboxController: UIViewController {
   open var dynamicBackground: Bool = false {
     didSet {
       if dynamicBackground == true {
-        effectView.frame = view.frame
+        effectView.frame = view.safeAreaLayoutGuide.layoutFrame
         backgroundView.frame = effectView.frame
         view.insertSubview(effectView, at: 0)
         view.insertSubview(backgroundView, at: 0)
@@ -128,7 +128,7 @@ open class LightboxController: UIViewController {
 
   open var spacing: CGFloat = 20 {
     didSet {
-      configureLayout(view.bounds.size)
+      configureLayout(view.safeAreaLayoutGuide.layoutFrame.size)
     }
   }
 
@@ -206,14 +206,14 @@ open class LightboxController: UIViewController {
 
     headerView.frame = CGRect(
       x: 0,
-      y: 16,
+      y: 0,
       width: view.bounds.width,
-      height: LightboxConfig.headerHeight
+      height: LightboxConfig.headerHeight + view.safeAreaLayoutGuide.layoutFrame.origin.y
     )
     
     if !presented {
       presented = true
-      configureLayout(view.bounds.size)
+        configureLayout(view.safeAreaLayoutGuide.layoutFrame.size)
     }
   }
 
@@ -247,7 +247,7 @@ open class LightboxController: UIViewController {
       pageViews.append(pageView)
     }
 
-    configureLayout(view.bounds.size)
+    configureLayout(view.safeAreaLayoutGuide.layoutFrame.size)
   }
 
   func reconfigurePagesForPreload() {
