@@ -26,6 +26,13 @@ class ViewController: UIViewController {
         LightboxConfig.headerHeight = 50.0
         LightboxConfig.hideStatusBar = false
         LightboxConfig.LeftButton.enabled = true
+        
+        if #available(iOS 13.0, *) {
+            LightboxConfig.LeftButton.image = UIImage(systemName: "trash")?.withTintColor(.white)
+            LightboxConfig.CloseButton.image = UIImage(systemName: "xmark")?.withTintColor(.white)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     // MARK: - Action methods
