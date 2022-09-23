@@ -103,7 +103,7 @@ open class LightboxController: UIViewController {
             pageDelegate?.lightboxController(self, didMoveToPage: currentPage)
             
             if let image = pageViews[currentPage].imageView.image, dynamicBackground {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.125) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + CATransaction.animationDuration()) {
                     self.loadDynamicBackground(image)
                 }
             }
@@ -114,7 +114,7 @@ open class LightboxController: UIViewController {
         return pageViews.count
     }
     
-    open var dynamicBackground: Bool = false {
+    open var dynamicBackground: Bool = true {
         didSet {
             if dynamicBackground == true {
                 effectView.frame = view.safeAreaLayoutGuide.layoutFrame
@@ -321,7 +321,7 @@ open class LightboxController: UIViewController {
         self.initialImages.remove(at: prevIndex)
         self.pageViews.remove(at: prevIndex).removeFromSuperview()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + CATransaction.animationDuration()) {
             self.configureLayout(self.view.bounds.size)
             self.currentPage = Int(self.scrollView.contentOffset.x / self.view.bounds.width)
             completion()
