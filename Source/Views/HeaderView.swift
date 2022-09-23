@@ -22,7 +22,11 @@ open class HeaderView: UIView {
             configuration.attributedTitle = attributedString
             configuration.image = LightboxConfig.CloseButton.image
             configuration.imagePadding = 6.0
-            configuration.baseForegroundColor = attributedString.foregroundColor
+            if let color = LightboxConfig.CloseButton.textAttributes[.foregroundColor] as? UIColor {
+                configuration.baseForegroundColor = color
+            } else {
+                configuration.baseForegroundColor = .white
+            }
             button.configuration = configuration
         } else {
             button.setAttributedTitle(title, for: .normal)
@@ -59,7 +63,11 @@ open class HeaderView: UIView {
             configuration.attributedTitle = attributedString
             configuration.image = LightboxConfig.LeftButton.image
             configuration.imagePadding = 6.0
-            configuration.baseForegroundColor = attributedString.foregroundColor
+            if let color = LightboxConfig.LeftButton.textAttributes[.foregroundColor] as? UIColor {
+                configuration.baseForegroundColor = color
+            } else {
+                configuration.baseForegroundColor = .white
+            }
             button.configuration = configuration
         } else {
             button.setAttributedTitle(title, for: .normal)
