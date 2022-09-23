@@ -177,8 +177,6 @@ open class LightboxController: UIViewController {
     // Lightbox hasn't been optimized to be used in presentation styles other than fullscreen.
     modalPresentationStyle = .fullScreen
     
-    statusBarHidden = UIApplication.shared.isStatusBarHidden
-
     view.backgroundColor = UIColor.black
     transitionManager.lightboxController = self
     transitionManager.scrollView = scrollView
@@ -198,7 +196,7 @@ open class LightboxController: UIViewController {
     scrollView.frame = view.bounds
     footerView.frame.size = CGSize(
       width: view.bounds.width,
-      height: 100
+      height: LightboxConfig.footerHeight
     )
 
     footerView.frame.origin = CGPoint(
@@ -210,7 +208,7 @@ open class LightboxController: UIViewController {
       x: 0,
       y: 16,
       width: view.bounds.width,
-      height: 100
+      height: LightboxConfig.headerHeight
     )
     
     if !presented {
