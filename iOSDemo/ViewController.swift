@@ -2,32 +2,34 @@ import UIKit
 import Lightbox
 
 class ViewController: UIViewController {
-  
-  lazy var showButton: UIButton = { [unowned self] in
-    let button = UIButton()
-    button.addTarget(self, action: #selector(showLightbox), for: .touchUpInside)
-    button.setTitle("Show me the lightbox", for: UIControl.State())
-    button.setTitleColor(UIColor(red:0.47, green:0.6, blue:0.13, alpha:1), for: UIControl.State())
-    button.titleLabel?.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 30)
-    button.frame = UIScreen.main.bounds
-    button.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
     
-    return button
-  }()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    view.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
-    view.backgroundColor = UIColor.white
-    view.addSubview(showButton)
-    title = "Lightbox"
-    LightboxConfig.preload = 2
-    LightboxConfig.headerHeight = 50.0
-  }
-  
-  // MARK: - Action methods
-  
+    lazy var showButton: UIButton = { [unowned self] in
+        let button = UIButton()
+        button.addTarget(self, action: #selector(showLightbox), for: .touchUpInside)
+        button.setTitle("Show me the lightbox", for: UIControl.State())
+        button.setTitleColor(UIColor(red:0.47, green:0.6, blue:0.13, alpha:1), for: UIControl.State())
+        button.titleLabel?.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 30)
+        button.frame = UIScreen.main.bounds
+        button.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
+        
+        return button
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
+        view.backgroundColor = UIColor.white
+        view.addSubview(showButton)
+        title = "Lightbox"
+        LightboxConfig.preload = 2
+        LightboxConfig.headerHeight = 50.0
+        LightboxConfig.hideStatusBar = false
+        LightboxConfig.LeftButton.enabled = true
+    }
+    
+    // MARK: - Action methods
+    
     @objc func showLightbox() {
         let images = [
             LightboxImage(imageURL: URL(string: "https://media.giphy.com/media/Ku65904QQe4yez448B/giphy.gif")!),

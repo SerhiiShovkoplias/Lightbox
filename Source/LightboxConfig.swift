@@ -72,7 +72,7 @@ public class LightboxConfig {
         ]
     }
     
-    public struct DeleteButton {
+    public struct LeftButton {
         public static var enabled = false
         public static var size: CGSize?
         public static var text = NSLocalizedString("Delete", comment: "")
