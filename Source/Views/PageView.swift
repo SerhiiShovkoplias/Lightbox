@@ -189,13 +189,13 @@ class PageView: UIScrollView {
         var imageViewFrame = imageView.frame
         
         if imageViewFrame.size.width < boundsSize.width {
-            imageViewFrame.origin.x = (boundsSize.width - imageViewFrame.size.width) / 2.0
+            imageViewFrame.origin.x = safeAreaInsets.left + (boundsSize.width - imageViewFrame.size.width) / 2.0
         } else {
             imageViewFrame.origin.x = 0.0
         }
         
         if imageViewFrame.size.height < boundsSize.height {
-            imageViewFrame.origin.y = (boundsSize.height - imageViewFrame.size.height) / 2.0
+            imageViewFrame.origin.y = safeAreaInsets.top + (boundsSize.height - imageViewFrame.size.height) / 2.0
         } else {
             imageViewFrame.origin.y = 0.0
         }
